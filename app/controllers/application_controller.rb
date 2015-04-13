@@ -1,5 +1,6 @@
 require './config/environment'
 require 'pry'
+require 'sinatra'
 
 class ApplicationController < Sinatra::Base
 
@@ -11,6 +12,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    erb :home
   end
+  
 end
