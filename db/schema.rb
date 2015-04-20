@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412174121) do
+ActiveRecord::Schema.define(version: 20150419144726) do
+
+  create_table "groups", force: :cascade do |t|
+    t.string "group_name"
+    t.string "group_image_url"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "user_id"
+    t.string "group_id"
     t.string "message"
   end
 
@@ -24,6 +30,11 @@ ActiveRecord::Schema.define(version: 20150412174121) do
     t.string "password"
     t.string "birthday"
     t.string "image_url"
+  end
+
+  create_table "users_to_groups", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
   end
 
 end

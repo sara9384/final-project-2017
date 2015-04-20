@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>NAME OF WEBSITE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+  </head>
+  <body>
+    <div class="container">
+
+      <% if session[:user_id] %><h3>
+        Welcome <%= @logged_in_user.username %>! | <a href="/">Logout</a></h3>
+      <% else %>
+        <a href="/">Login</a> or <a href="/users">sign up</a>!
+      <% end %>
+
+      <br><h3>Create a group</h3>
+      <form action="/create_group" method="POST">
+        <h4>Group name:</h4><input class="form-control" type="text" name="group_name">
+        <br><input type="submit" class="btn btn-default"></br>
+      </form></br>
+      
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
