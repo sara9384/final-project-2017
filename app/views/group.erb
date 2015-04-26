@@ -8,7 +8,24 @@
   <body>
     <div class="container">
       
-      
+     <% if session[:user_id] %><h3>
+        Welcome <a href="/user"><%= @logged_in_user.username %></a>! | <a href="/">Logout</a></h3>
+      <% else %>
+        <a href="/">Login</a> or <a href="/users">sign up</a>!
+      <% end %>
+
+      <% if session[:group_id] %><h3><%= @logged_in_group.group_name %></h3>
+      <% else %>
+        <a href="/">Login</a> or <a href="/users">sign up</a>!
+      <% end %>
+
+      <% if session[:user_id] %>
+        <form action="/messages" method="POST">
+        <input type="hidden" name="user_id" value=<%= session[:user_id] %>>
+        Message: <input class="form-control" type="text" name="message">
+        <input type="submit" class="btn btn-default">
+        </form>
+      <% end %>
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

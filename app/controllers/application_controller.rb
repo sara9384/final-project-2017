@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect('/user')
     else
-      erb :error
+      erb :login_error
     end
   end
 
@@ -42,15 +42,37 @@ class ApplicationController < Sinatra::Base
   	erb :user
   end
 
-  post '/create_group' do
-  	new_group = Group.new(:group_name => params[:group_name])
-  	new_group.save
-  	redirect ("group/#{new_group: group.id}")
+   post '/create_group' do
+    new_group = Group.new(:group_name => params[:group_name], :group_password => params[:group_password])
+    new_group.save
+    session[:group_id] = new_group.id
+    redirect ('/group')
   end
 
-  get '/groups/:id' do
-  	Group.find(params[:id])
-  	erb :group
+  post '/grouplogin' do
+    @group = Group.find_by(:group_name =>params[:group_name], :group_password => params[:group_password])
+    if @group
+      session[:group_id] = @group.id
+      redirect('/group')
+    else
+      erb :group_error
+    end
+  end
+
+  get '/group' do
+    if session[:user_id]
+      @logged_in_user = User.find(session[:user_id])
+    end
+    if session[:group_id]
+      @logged_in_group = Group.find(session[:group_id])
+    end
+    erb :group
+  end
+
+  post '/messages' do
+  new_message = Message.new(:user_id => params[:user_id], :message => params[:message])
+    new_message.save
+    redirect ('/group')
   end
 
 end
