@@ -5,7 +5,7 @@ gem "activerecord"
 gem "sinatra-activerecord"
 gem "rake"
 gem 'bcrypt'
-
+gem 'actionmailer'
 
 group :development do
   gem "sqlite3"

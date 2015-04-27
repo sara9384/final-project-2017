@@ -15,8 +15,7 @@ ActiveRecord::Schema.define(version: 20150419144726) do
 
   create_table "groups", force: :cascade do |t|
     t.string "group_name"
-    t.string "group_password"
-    t.string "group_image_url"
+    t.string "group_password_hash"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -28,9 +27,7 @@ ActiveRecord::Schema.define(version: 20150419144726) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password"
-    t.string "birthday"
-    t.string "image_url"
+    t.string "password_hash"
   end
 
   create_table "users_to_groups", force: :cascade do |t|
