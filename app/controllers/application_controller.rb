@@ -47,18 +47,18 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-  	new_user = User.new(:username => params[:username], :email => params[:email])
+    new_user = User.new(:username => params[:username], :email => params[:email])
     new_user.password = params[:password]
-  	new_user.save!
-  	session[:user_id] = new_user.id
-  	redirect ('/user')
+    new_user.save!
+    session[:user_id] = new_user.id
+    redirect ('/user')
   end
 
   get '/user' do
-  	if session[:user_id]
-  		@logged_in_user = User.find(session[:user_id])
-  	end
-  	erb :user
+    if session[:user_id]
+      @logged_in_user = User.find(session[:user_id])
+    end
+    erb :user
   end
 
   post '/create_group' do
@@ -112,4 +112,3 @@ class ApplicationController < Sinatra::Base
     redirect('/')
   end
 end
-
