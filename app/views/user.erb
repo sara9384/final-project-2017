@@ -3,10 +3,33 @@
   <head>
     <title>NAME OF WEBSITE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/user.css">
   </head>
   <body>
     <div class="container">
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+           
+        </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="http://www.brearley.org" target="_blank" class="link">The Brearley School</a></li>
+              <li><a href="http://moodle.brearley.org/login/index.php" target="_blank" class="link">Moodle</a></li>
+              <li><a href="http://www.weather.com/weather/today/l/10028:4:US" target="_blank" class="link">Weather</a></li>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 
       <% if session[:user_id] %><h3>
         Welcome <a href="/user"><%= @logged_in_user.username %></a>! | <a href="/">Logout</a></h3>
