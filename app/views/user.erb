@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>NAME OF WEBSITE</title>
+    <title>WEBSITE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/user.css">
   </head>
@@ -37,12 +37,12 @@
         <a href="/">Login</a> or <a href="/">sign up</a>!
       <% end %>
 
-      <br><h3>Create a group</h3>
+      <h3>Create a group</h3>
       <form action="/create_group" method="POST">
         <h4>Group name:</h4><input class="form-control" type="text" name="group_name">
         <h4>Password:</h4><input class="form-control" type="text" name="group_password">
         <br><input type="submit" class="btn btn-default"></br>
-      </form></br>
+      </form>
 
       <br><h3>Enter a group</h3>
       <form action="/grouplogin" method="POST">

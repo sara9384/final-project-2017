@@ -14,3 +14,6 @@ group :development do
   gem "tux"
 end
 
+group :production do
+	gem "pg"
+end

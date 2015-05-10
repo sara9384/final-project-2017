@@ -31,6 +31,7 @@ GEM
     mime-types (2.5)
     minitest (5.5.1)
     netrc (0.10.3)
+    pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -84,6 +85,7 @@ DEPENDENCIES
   activerecord
   bcrypt
   mailgun
+  pg
   pry
   rake
   shotgun
