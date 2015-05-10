@@ -1,13 +1,14 @@
-require 'action_mailer'
-require 'bcrypt'
+# require 'action_mailer'
+# require 'bcrypt'
 
-class Mailer < ActionMailer::Base
-  default to: "groupergroups@gmail.com"
+# # class Mailer < ActionMailer::Base
+# #   default to: "emmakatherine@optonline.net"
 
-  def notification(from_email)
-    mail(from: from_email, subject: "New Password") do |format|
-      format.text
-      format.html
-    end
-  end
-end
+# #   def notification(from_email)
+# #   	binding.pry
+# #     mail(from: from_email, subject: "New Password") do |format|
+# #       format.text
+# #       format.html
+# #     end
+# #   end
+# # end

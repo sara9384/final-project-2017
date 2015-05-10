@@ -1,5 +1,4 @@
 require 'bcrypt'
-require 'action_mailer'
 
 class User < ActiveRecord::Base
 	has_many :messages

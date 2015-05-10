@@ -6,24 +6,8 @@ require './app/mailers/mailer'
 require 'pry'
 require 'sinatra'
 require 'bcrypt'
-require 'action_mailer'
 
 class ApplicationController < Sinatra::Base
-
-  configure do
-    ActionMailer::Base.raise_delivery_errors = true
-    ActionMailer::Base.delivery_method = :smtp
-    ActionMailer::Base.smtp_settings = {
-     :address        => "smtp.gmail.com",
-     :port           => 587,
-     :domain         => "example.com",
-     :authentication => :plain,
-     :user_name      => "YOUR_EMAIL",
-     :password       => "YOUR_PASSWORD",
-     :enable_starttls_auto => true
-    }
-    ActionMailer::Base.view_paths = File.expand_path('../../../app/views/', __FILE__)
-  end
 
   configure do
     set :public_folder, 'public'
@@ -106,9 +90,25 @@ class ApplicationController < Sinatra::Base
   post '/forgot_password' do
     @user = User.find_by_email(params[:email])
     random_password = Array.new(10).map { (65 + rand(58)).chr }.join
-    @user.password_hash = random_password
+    @user.temp_password = random_password
     @user.save!
-     Mailer.notification(@user, random_password)
+    RestClient.post "https://api:key-03ddff059dae45d8bb16221abff9736d"\
+      "@api.mailgun.net/v3/sandbox8dd8b1ae6fb6478fb2b5812bd92bb78a.mailgun.org/messages",
+      :from => "Mailgun Sandbox <postmaster@sandbox8dd8b1ae6fb6478fb2b5812bd92bb78a.mailgun.org>",
+    :to => "#{@user.email}",
+    :subject => "Temporary Password",
+    :text => "Your temporary password is: #{@user.temp_password}"
+    redirect('/reset')
+  end
+
+  post '/reset' do
+    @user = User.find_by_temp_password(params[:temp_password])
+    @user.password = params[:password]
+    @user.save!
     redirect('/')
+  end
+
+  get '/reset' do
+    erb :reset
   end
 end

@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150419144726) do
     t.string "username"
     t.string "email"
     t.string "password_hash"
+    t.string "temp_password"
   end
 
   create_table "users_to_groups", force: :cascade do |t|
