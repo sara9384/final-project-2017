@@ -16,9 +16,4 @@ class User < ActiveRecord::Base
 	    self.password_hash = @password
 	  end
 
-	  def destroy
-	  	@user.destroy
-	  	redirect_to('/home')
-	  end
-
 end
