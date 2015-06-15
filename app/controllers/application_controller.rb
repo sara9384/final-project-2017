@@ -43,6 +43,10 @@ class ApplicationController < Sinatra::Base
     erb :user
   end
 
+  get '/delete' do
+    erb :delete
+  end
+
   post '/create_group' do
     new_group = Group.new(:group_name => params[:group_name])
     new_group.password = params[:password]
