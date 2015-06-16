@@ -12,8 +12,10 @@
 
 .yes_button{
 	margin-left:400px;
+	display: inline-block;
 }
 
 .no_button{
 	margin-left:600px;
+	display: inline-block;
 }
